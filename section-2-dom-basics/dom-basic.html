@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <p>{{title}}</p>
+        <p>{{sayHello()}}</p>
+        <!-- Esse link não funciona, pois a sintaxe {{}} não funciona aqui-->
+        <a href="{{link}}">Link quebrado</a>
+        <!-- href funciona assim com Vue-->
+        <p><a v-bind:href="link">Google</a></p>
+        <img v-bind:src="linkImagem" alt="Rambo atirando" width="80px">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.app', 
+            data: {
+                title: "Hello",
+                link: "http://google.com",
+                linkImagem: "http://3.images.southparkstudios.com/blogs/southparkstudios.com/files/2014/05/0203_authoritah1.jpg?quality=0.8"
+            },
+            methods: {
+                sayHello: function(){
+                    return this.title; //Com JS normal isso não deveria ser possível
+                    //mas o VUE cria um atalho que permite isso
+                }
+            }
+        });
+    </script>
+</body>
+</html>
